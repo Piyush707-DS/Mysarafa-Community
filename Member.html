@@ -8,6 +8,33 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <link rel="icon" href="Assets/Images/logo.png" type="image/x-icon">
+    <style>
+        .info-link {
+            color: #2f95ff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 8px;
+            border-radius: 50%;
+            background: rgba(47, 149, 255, 0.1);
+        }
+        
+        .info-link:hover {
+            color: #1d7dd8;
+            background: rgba(47, 149, 255, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 2px 8px rgba(47, 149, 255, 0.3);
+        }
+        
+        .info-link i {
+            transition: transform 0.3s ease;
+        }
+        
+        .info-link:hover i {
+            transform: rotate(15deg);
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -130,6 +157,7 @@
                         <th>Shop Name</th>
                         <th>Address</th>
                         <th>Action</th>
+                        <th>Info</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -154,6 +182,12 @@
                                 </div>
                             </div>
                         </td>
+                        <td>
+                            <a href="member-details.html" class="info-link" title="View Details">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </td>
+                        
                     </tr>
                     <tr>
                         <td>2</td>
@@ -175,6 +209,11 @@
                                     </a>
                                 </div>
                             </div>
+                        </td>
+                        <td>
+                            <a href="member-details.html" class="info-link" title="View Details">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
                         </td>
                     </tr>
                     <tr>
@@ -198,6 +237,11 @@
                                 </div>
                             </div>
                         </td>
+                        <td>
+                            <a href="member-details.html" class="info-link" title="View Details">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>4</td>
@@ -220,6 +264,11 @@
                                 </div>
                             </div>
                         </td>
+                        <td>
+                            <a href="member-details.html" class="info-link" title="View Details">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </td>
                     </tr>
                     <tr>
                         <td>5</td>
@@ -241,6 +290,11 @@
                                     </a>
                                 </div>
                             </div>
+                        </td>
+                        <td>
+                            <a href="member-details.html" class="info-link" title="View Details">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
                         </td>
                     </tr>
                 </tbody>
