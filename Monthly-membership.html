@@ -106,42 +106,23 @@
 
         <main class="main-content">
           <div class="membership-cards creative-cards">
-            <div class="membership-card left creative-card">
-              <div class="membership-title"><i class="fas fa-user-plus"></i> Complete Your Membership</div>
-              <div class="membership-section">
-                <div class="membership-section-title"><i class="fas fa-user"></i> Personal Information</div>
-                <label for="member-name">Name:</label>
-                <input type="text" id="member-name" class="membership-input" placeholder="Enter your name">
-                <label for="shop-name">Shop Name:</label>
-                <input type="text" id="shop-name" class="membership-input" placeholder="Enter shop name">
-              </div>
-              <div class="membership-section">
-                <div class="membership-section-title"><i class="fas fa-credit-card"></i> Payment Information</div>
-                <label for="payment-type">Payment type :</label>
-                <select id="payment-type" class="membership-input">
-                  <option>Select</option>
-                  <option>UPI</option>
-                  <option>Card</option>
-                  <option>Cash</option>
-                </select>
-                <label for="payment-app">Payment app:</label>
-                <select id="payment-app" class="membership-input">
-                  <option>Select</option>
-                  <option>Google Pay</option>
-                  <option>PhonePe</option>
-                  <option>Paytm</option>
-                </select>
-                <label for="membership-plan">Membership plan</label>
-                <select id="membership-plan" class="membership-input">
-                  <option>Select</option>
-                  <option>Monthly</option>
-                  <option>Yearly</option>
-                </select>
-              </div>
-              <button class="membership-pay-btn creative-pay-btn">
-                <i class="fas fa-arrow-right"></i> Make Payment
-              </button>
-            </div>
+           <div class="group-create-preview-section">
+      <div class="cover-photo-preview">
+        <img src="Assets/Images/qr.svg" alt="Cover Preview" class="cover-img" id="coverImagePreview">
+        <input type="file" id="coverImageInput" name="cover-Image" class="form-input" accept="image/*" style="display: none;">
+      </div>
+      <div>
+        Scan the QR code to Pay Monthly Membership Fee
+      </div>
+      <div class="group-details">
+       <a href="#">Upi-Id:-<h2 id="groupNamePreview">hambire@ybl</h2></a> 
+      </div>
+      <div>
+     <label for="Screenshot">Upload Screenshot*</label>
+                              <input type="file" id="Screenshot" name="Screenshot" class="Screenshot-input" accept="image/*,application/pdf" required>
+                              <small>Upload  Screenshot Here </small>
+                          </div>
+    </div>
             <div class="membership-card right creative-card">
               <div class="membership-title"><i class="fas fa-gem"></i> Monthly Membership Benefits</div>
               <div class="membership-section-title"><i class="fas fa-gift"></i> What's Included:</div>

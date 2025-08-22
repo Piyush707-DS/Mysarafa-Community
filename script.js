@@ -21,35 +21,35 @@ function isUserLeader() {
 }
 
 // Function to show/hide leader elements
-function toggleLeaderElements() {
-  const leaderElements = document.querySelectorAll('.leader-only');
-  const leaderMenuItems = document.querySelectorAll('.leader-menu-item');
+// function toggleLeaderElements() {
+//   const leaderElements = document.querySelectorAll('.leader-only');
+//   const leaderMenuItems = document.querySelectorAll('.leader-menu-item');
   
-  if (isUserLeader()) {
-    // Show leader elements
-    leaderElements.forEach(element => {
-      element.style.display = 'block';
-    });
+//   if (isUserLeader()) {
+//     // Show leader elements
+//     leaderElements.forEach(element => {
+//       element.style.display = 'block';
+//     });
     
-    // Show leader menu items
-    leaderMenuItems.forEach(item => {
-      item.style.display = 'flex';
-    });
+//     // Show leader menu items
+//     leaderMenuItems.forEach(item => {
+//       item.style.display = 'flex';
+//     });
     
-    // Update user info to show leader status
-    updateUserInfo();
-  } else {
-    // Hide leader elements
-    leaderElements.forEach(element => {
-      element.style.display = 'none';
-    });
+//     // Update user info to show leader status
+//     updateUserInfo();
+//   } else {
+//     // Hide leader elements
+//     leaderElements.forEach(element => {
+//       element.style.display = 'none';
+//     });
     
-    // Hide leader menu items
-    leaderMenuItems.forEach(item => {
-      item.style.display = 'none';
-    });
-  }
-}
+//     // Hide leader menu items
+//     leaderMenuItems.forEach(item => {
+//       item.style.display = 'none';
+//     });
+//   }
+// }
 
 // Function to update user info display
 function updateUserInfo() {
