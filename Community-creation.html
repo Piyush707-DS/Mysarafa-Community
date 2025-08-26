@@ -9,156 +9,217 @@
     
     <link rel="icon" href="Assets/Images/logo.png" type="image/x-icon">
     <style>
-      .modal {
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #f0f2f5;
+      color: #1c1e21;
+      line-height: 1.34;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    .form-container {
+      padding: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-weight: 600;
+      font-size: 15px;
+      color: #1c1e21;
+      margin-bottom: 8px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #dddfe2;
+      border-radius: 6px;
+      font-size: 15px;
+      transition: border-color 0.2s;
+      background: #ffffff;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: #1877f2;
+      box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+    }
+
+    .form-hint {
+      color: #65676b;
+      font-size: 13px;
+      margin-top: 4px;
+      display: block;
+    }
+
+    .submit-btn {
+      background: #1877f2;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      width: 100%;
+    }
+
+    .submit-btn:hover {
+      background: #166fe5;
+    }
+
+    /* Updated modal styles to match Facebook exactly */
+    .modal {
       display: none;
       position: fixed;
       z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
       justify-content: center;
       align-items: center;
-   
     }
 
     .modal-content {
       background: white;
-      padding: 40px 30px;
-      border-radius: 20px;
+      padding: 20px;
+      border-radius: 8px;
       text-align: center;
-      max-width: 450px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      border: 1px solid rgba(255,255,255,0.2);
-      animation: modalSlideIn 0.3s ease-out;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
       position: relative;
-      overflow: hidden;
-    }
-
-    .modal-content::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #007bff, #28a745, #ffc107, #dc3545);
     }
 
     .modal-content p {
-      font-size: 18px;
-      color: #333;
-      margin-bottom: 30px;
-      line-height: 1.6;
-      font-weight: 500;
+      font-size: 16px;
+      color: #1c1e21;
+      margin-bottom: 20px;
+      line-height: 1.34;
+      font-weight: 400;
     }
 
     .modal button {
-      padding: 14px 32px;
-      margin: 0 12px;
+      padding: 8px 16px;
+      margin: 0 4px;
       border: none;
-      border-radius: 50px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .modal button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s;
-    }
-
-    .modal button:hover::before {
-      left: 100%;
+      transition: all 0.2s ease;
+      min-width: 80px;
     }
 
     #yesBtn {
-      background: linear-gradient(135deg, #28a745, #20c997);
+      background: #1877f2;
       color: white;
-      box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
     }
 
     #yesBtn:hover {
-      background: linear-gradient(135deg, #218838, #1e7e34);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(40, 167, 69, 0.6);
+      background: #166fe5;
     }
 
     #noBtn {
-      background: linear-gradient(135deg, #6c757d, #495057);
-      color: white;
-      box-shadow: 0 4px 15px rgba(108, 117, 125, 0.4);
+      background: #e4e6ea;
+      color: #1c1e21;
     }
 
     #noBtn:hover {
-      background: linear-gradient(135deg, #5a6268, #343a40);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(108, 117, 125, 0.6);
+      background: #d8dadf;
     }
 
-    @keyframes modalSlideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-50px) scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    /* Responsive design for mobile */
-    @media (max-width: 480px) {
-      .modal-content {
-        margin: 20px;
-        padding: 30px 20px;
-        max-width: calc(100% - 40px);
-      }
-      
-      .modal-content p {
-        font-size: 16px;
-        margin-bottom: 25px;
-      }
-      
-      .modal button {
-        padding: 12px 24px;
-        font-size: 14px;
-        margin: 0 8px;
-      }
-    }
-
-    /* Question Form Modal Styles - Facebook Design */
+    /* Facebook-style membership questions modal */
     .question-form-modal {
       display: none;
       position: fixed;
       z-index: 1001;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
       justify-content: center;
       align-items: center;
     }
 
     .question-form-content {
       background: white;
-      padding: 0;
       border-radius: 8px;
       max-width: 500px;
       width: 90%;
       max-height: 90vh;
       overflow-y: auto;
-      text-align: left;
-      box-shadow: 0 12px 28px 0 rgba(0,0,0,0.2), 0 2px 4px 0 rgba(0,0,0,0.1);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Facebook-style membership questions modal */
+    .questions-display-modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .questions-display-content {
+      background: white;
+      border-radius: 8px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Membership questions display section */
+    .questions-display-section {
+      padding: 20px;
     }
 
     .modal-header {
@@ -167,15 +228,13 @@
       align-items: center;
       padding: 16px 20px;
       border-bottom: 1px solid #e4e6ea;
-      position: relative;
     }
 
     .modal-header h2 {
-      color: #050505;
+      color: #1c1e21;
       margin: 0;
       font-size: 20px;
       font-weight: 700;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
 
     .close-btn {
@@ -196,21 +255,124 @@
 
     .close-btn:hover {
       background-color: #f2f3f5;
-      color: #050505;
     }
 
+    /* Membership questions display section */
+    .questions-display-section {
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      margin: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .questions-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .questions-header h3 {
+      color: #1c1e21;
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .create-btn {
+      background: #1877f2;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .create-btn:hover {
+      background: #166fe5;
+    }
+
+    .question-item {
+      background: #f7f8fa;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid #e4e6ea;
+    }
+
+    .question-number {
+      color: #65676b;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .question-text {
+      color: #1c1e21;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .question-preview {
+      background: #e4e6ea;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 12px;
+      color: #65676b;
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    .question-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .edit-btn, .delete-btn {
+      background: none;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .edit-btn {
+      background: #e7f3ff;
+      color: #1877f2;
+    }
+
+    .edit-btn:hover {
+      background: #d2e9ff;
+    }
+
+    .delete-btn {
+      background: #ffebee;
+      color: #d32f2f;
+    }
+
+    .delete-btn:hover {
+      background: #ffcdd2;
+    }
+
+    /* Edit question modal styles */
     .question-input-section {
       padding: 20px 20px 0 20px;
-      margin-bottom: 16px;
     }
 
     .question-input-section input[type="text"] {
       width: 100%;
       padding: 12px 16px;
       border: 1px solid #e4e6ea;
-      border-radius: 8px;
+      border-radius: 6px;
       font-size: 15px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       transition: border-color 0.2s;
       box-sizing: border-box;
     }
@@ -226,21 +388,25 @@
     }
 
     .question-type-section {
-      padding: 0 20px 16px 20px;
-      margin-bottom: 16px;
+      padding: 16px 20px;
+    }
+
+    .question-type-dropdown-container {
+      position: relative;
+      width: 100%;
     }
 
     .question-type-dropdown {
       width: 100%;
       padding: 12px 16px;
       border: 1px solid #e4e6ea;
-      border-radius: 8px;
+      border-radius: 6px;
       font-size: 15px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background-color: white;
       cursor: pointer;
       transition: border-color 0.2s;
       box-sizing: border-box;
+      appearance: none;
     }
 
     .question-type-dropdown:focus {
@@ -249,9 +415,18 @@
       box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
     }
 
+    .dropdown-icon {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #65676b;
+      pointer-events: none;
+      font-size: 12px;
+    }
+
     .options-section {
       padding: 0 20px 16px 20px;
-      margin-bottom: 16px;
     }
 
     .option-inputs {
@@ -271,9 +446,8 @@
       flex: 1;
       padding: 12px 16px;
       border: 1px solid #e4e6ea;
-      border-radius: 8px;
+      border-radius: 6px;
       font-size: 15px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       transition: border-color 0.2s;
       box-sizing: border-box;
     }
@@ -302,7 +476,7 @@
 
     .remove-option-btn:hover {
       background: #d8dadf;
-      color: #050505;
+      color: #1c1e21;
     }
 
     .add-option-btn {
@@ -313,72 +487,37 @@
       cursor: pointer;
       font-size: 15px;
       font-weight: 600;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       text-align: left;
       transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .add-option-btn:hover {
       color: #166fe5;
-      text-decoration: underline;
     }
 
-         .modal-footer {
-       display: flex;
-       justify-content: space-between;
-       align-items: center;
-       padding: 16px 20px;
-       border-top: 1px solid #e4e6ea;
-       background-color: #f8f9fa;
-       border-radius: 0 0 8px 8px;
-       gap: 12px;
-     }
-
-     .modal-footer button {
-       padding: 8px 16px;
-       border: none;
-       border-radius: 6px;
-       cursor: pointer;
-       font-size: 15px;
-       font-weight: 600;
-       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-       transition: all 0.2s;
-       min-width: 80px;
-     }
-
-     .btn-success {
-       background: #42b883;
-       color: white;
-     }
-
-     .btn-success:hover {
-       background: #369870;
-     }
-
-    .btn-secondary {
-      background: none;
-      color: #1877f2;
-      padding: 0;
-      min-width: auto;
+    .modal-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-top: 1px solid #e4e6ea;
+      background-color: #f8f9fa;
+      border-radius: 0 0 8px 8px;
+      gap: 12px;
     }
 
-    .btn-secondary:hover {
-      background: none;
-      color: #166fe5;
-      text-decoration: underline;
-    }
-
-    .btn-danger {
-      background: none;
-      color: #e41e3f;
-      padding: 0;
-      min-width: auto;
-    }
-
-    .btn-danger:hover {
-      background: none;
-      color: #c41e3a;
-      text-decoration: underline;
+    .modal-footer button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      transition: all 0.2s;
+      min-width: 80px;
     }
 
     .btn-primary {
@@ -390,141 +529,96 @@
       background: #166fe5;
     }
 
-         .btn-primary:disabled {
-       background: #e4e6ea;
-       color: #bcc0c4;
-       cursor: not-allowed;
-     }
+    .btn-success {
+      background: #42b883;
+      color: white;
+    }
 
-     /* Questions Display Section Styles */
-     .questions-display-section {
-       margin: 20px 0;
-       padding: 20px;
-       background: #f8f9fa;
-       border-radius: 8px;
-       border: 1px solid #e4e6ea;
-     }
+    .btn-success:hover {
+      background: #369870;
+    }
 
-     .questions-header {
-       display: flex;
-       justify-content: space-between;
-       align-items: center;
-       margin-bottom: 20px;
-       padding-bottom: 15px;
-       border-bottom: 1px solid #e4e6ea;
-     }
+    .btn-secondary {
+      background: none;
+      color: #1877f2;
+      padding: 8px 0;
+      min-width: auto;
+    }
 
-     .questions-header h3 {
-       color: #050505;
-       margin: 0;
-       font-size: 18px;
-       font-weight: 700;
-       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-     }
+    .btn-secondary:hover {
+      color: #166fe5;
+      text-decoration: underline;
+    }
 
-     .create-question-btn {
-       background: #1877f2;
-       color: white;
-       border: none;
-       padding: 8px 16px;
-       border-radius: 6px;
-       cursor: pointer;
-       font-size: 14px;
-       font-weight: 600;
-       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-       transition: background-color 0.2s;
-     }
+    .btn-danger {
+      background: none;
+      color: #e41e3f;
+      padding: 8px 0;
+      min-width: auto;
+    }
 
-     .create-question-btn:hover {
-       background: #166fe5;
-     }
+    .btn-danger:hover {
+      color: #c5102e;
+      text-decoration: underline;
+    }
 
-     .questions-list {
-       display: flex;
-       flex-direction: column;
-       gap: 16px;
-     }
+    /* Group rules section styling */
+    .group-rules-section {
+      margin-top: 20px;
+      padding: 16px;
+      background: #f7f8fa;
+      border-radius: 8px;
+      border: 1px solid #e4e6ea;
+    }
 
-     .question-card {
-       background: white;
-       border: 1px solid #e4e6ea;
-       border-radius: 8px;
-       padding: 20px;
-       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-     }
+    .group-rules-header {
+      color: #1c1e21;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
 
-     .question-number {
-       color: #65676b;
-       font-size: 14px;
-       font-weight: 500;
-       margin-bottom: 8px;
-     }
+    .group-rules-text {
+      color: #65676b;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
 
-     .question-text {
-       color: #050505;
-       font-size: 16px;
-       font-weight: 600;
-       margin-bottom: 16px;
-       line-height: 1.4;
-     }
+    .learn-more-link {
+      color: #1877f2;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
 
-     .answer-input {
-       width: 100%;
-       padding: 12px 16px;
-       border: 1px solid #e4e6ea;
-       border-radius: 8px;
-       font-size: 15px;
-       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-       background: #f8f9fa;
-       color: #65676b;
-       margin-bottom: 16px;
-       box-sizing: border-box;
-     }
+    .learn-more-link:hover {
+      text-decoration: underline;
+    }
 
-     .answer-input::placeholder {
-       color: #65676b;
-     }
-
-     .question-actions {
-       display: flex;
-       gap: 12px;
-       justify-content: flex-end;
-     }
-
-     .edit-question-btn {
-       background: #e7f3ff;
-       color: #1877f2;
-       border: none;
-       padding: 8px 16px;
-       border-radius: 6px;
-       cursor: pointer;
-       font-size: 14px;
-       font-weight: 600;
-       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-       transition: all 0.2s;
-     }
-
-     .edit-question-btn:hover {
-       background: #dbe7f2;
-     }
-
-     .delete-question-btn {
-       background: #f8f9fa;
-       color: #65676b;
-       border: none;
-       padding: 8px 16px;
-       border-radius: 6px;
-       cursor: pointer;
-       font-size: 14px;
-       font-weight: 600;
-       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-       transition: all 0.2s;
-     }
-
-     .delete-question-btn:hover {
-       background: #e4e6ea;
-       color: #050505;
-     }
+    @media (max-width: 480px) {
+      .container {
+        margin: 20px;
+        border-radius: 8px;
+      }
+      
+      .header {
+        padding: 20px;
+      }
+      
+      .form-container {
+        padding: 20px;
+      }
+      
+      .modal-content {
+        margin: 20px;
+        max-width: calc(100% - 40px);
+      }
+      
+      .question-form-content {
+        margin: 20px;
+        max-width: calc(100% - 40px);
+      }
+    }
     </style>
 </head>
 <body>
@@ -624,92 +718,116 @@
       <main class="main-content">
         <h1 class="page-title">Community Creation</h1>
           
-<main class="main-content">
-  <div class="group-create-container">
-    <!-- Left Section: Input Fields -->
-    <div class="group-create-form-section">
-      <h2 class="form-title">Community Group</h2>
-      <form class="group-create-form" id="groupCreateForm">
-        <div class="form-section">
-          <label for="communityName" class="form-label">Community Name</label>
-          <input type="text" id="communityName" name="communityName" class="form-input" placeholder="Enter Community name" required>
-        </div>
-        <div class="form-section">
-          <label for="community-type" class="form-label">Choose Privacy</label>
-          <select id="community-type" class="form-input">
-            <option value="">Select</option>
-            <option value="public">Public</option>
-            <option value="private">Private</option>
-          </select>
-          <small class="form-hint">
-            Only members can see who's in the group and what they post. You can't change this group to public later.
-          </small>
-        </div>
+        <div class="group-create-container">
+          <!-- Left Section: Input Fields -->
+          <div class="group-create-form-section">
+            <h2 class="form-title">Community Group</h2>
+            <form class="group-create-form" id="groupCreateForm">
+              <div class="form-section">
+                <label for="communityName" class="form-label">Community Name</label>
+                <input type="text" id="communityName" name="communityName" class="form-input" placeholder="Enter Community name" required>
+              </div>
+              <div class="form-section">
+                <label for="community-type" class="form-label">Choose Privacy</label>
+                <select id="community-type" class="form-input">
+                  <option value="">Select</option>
+                  <option value="public">Public</option>
+                  <option value="private">Private</option>
+                </select>
+                <small class="form-hint">
+                  Only members can see who's in the group and what they post. You can't change this group to public later.
+                </small>
+              </div>
     
-        <!-- Privacy Confirmation Modal -->
-        <div class="modal" id="privacyModal">
-          <div class="modal-content">
-            <p>Do you want to ask members some questions before they join?</p>
-            <button id="yesBtn">Yes</button>
-            <button id="noBtn">No</button>
+              <!-- Privacy Confirmation Modal -->
+              <div class="modal" id="privacyModal">
+                <div class="modal-content">
+                  <p>Do you want to ask members some questions before they join?</p>
+                  <button id="yesBtn">Yes</button>
+                  <button id="noBtn">No</button>
+                </div>
+              </div>
+
+                          <!-- Question Form Modal -->
+         <div class="question-form-modal" id="questionFormModal">
+          <div class="question-form-content">
+            <div class="modal-header">
+              <h2 id="modalTitle">Edit Question</h2>
+              <button class="close-btn" id="closeQuestionModal">&times;</button>
+            </div>
+            
+            <form id="questionForm">
+              <div class="question-input-section">
+                <input type="text" id="questionText" name="questionText" placeholder="Ask a question..." required>
+              </div>
+
+              <div class="question-type-section">
+                <div class="question-type-dropdown-container">
+                  <select id="questionTypeSelect" name="questionType" class="question-type-dropdown">
+                    <option value="checkbox">Checkboxes</option>
+                    <option value="radio">Multiple Choice</option>
+                    <option value="text">Written Answer</option>
+                  </select>
+                  <span class="dropdown-icon">▼</span>
+                </div>
+              </div>
+
+              <div class="options-section" id="optionsSection">
+                <div class="option-inputs" id="optionInputs">
+                  <div class="option-input-row">
+                    <input type="text" class="option-input" placeholder="Write your answer" required>
+                    <button type="button" class="remove-option-btn" onclick="removeOption(this)">×</button>
+                  </div>
+                  <div class="option-input-row">
+                    <input type="text" class="option-input" placeholder="Write your answer" required>
+                    <button type="button" class="remove-option-btn" onclick="removeOption(this)">×</button>
+                  </div>
+                </div>
+                <button type="button" class="add-option-btn" onclick="addOption()">
+                  + Add an option
+                </button>
+              </div>
+
+              <div class="modal-footer">
+                <div style="display: flex; gap: 12px;">
+                  <button type="button" class="btn-secondary" id="cancelQuestionBtn">Cancel</button>
+                  <button type="button" class="btn-danger" id="deleteQuestionBtn">Delete</button>
+                </div>
+                <div style="display: flex; gap: 12px;">
+                  <button type="submit" class="btn-primary">Save</button>
+                  <button type="button" class="btn-success" id="addAnotherQuestionBtn">Create</button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
 
-                 <!-- Question Form Modal -->
-         <div class="question-form-modal" id="questionFormModal">
-           <div class="question-form-content">
-                          <div class="modal-header">
-                <h2>Question 1</h2>
-                <button class="close-btn" id="closeQuestionModal">&times;</button>
+         <!-- Questions Display Modal -->
+         <div class="questions-display-modal" id="questionsDisplayModal">
+          <div class="questions-display-content">
+            <div class="modal-header">
+              <h2>Membership Questions</h2>
+              <button class="close-btn" id="closeQuestionsDisplayModal">&times;</button>
+            </div>
+            
+            <div class="questions-display-section">
+              <div id="questionsList">
+                <!-- Questions will be dynamically added here -->
               </div>
               
-             <form id="questionForm">
-               <div class="question-input-section">
-                 <input type="text" id="questionText" name="questionText" placeholder="Ask a question..." required>
-               </div>
+              <div class="group-rules-section">
+                <div class="group-rules-header">Group Rules</div>
+                <div class="group-rules-text">Create group rules and ask pending members to agree to them.</div>
+                <a href="#" class="learn-more-link">Learn More</a>
+              </div>
+            </div>
 
-               <div class="question-type-section">
-                 <select id="questionTypeSelect" name="questionType" class="question-type-dropdown">
-                   <option value="checkbox">Checkboxes</option>
-                   <option value="radio">Multiple Choice</option>
-                   <option value="text">Written Answer</option>
-                 </select>
-               </div>
-
-               <div class="options-section" id="optionsSection">
-                 <div class="option-inputs" id="optionInputs">
-                   <div class="option-input-row">
-                     <input type="text" class="option-input" placeholder="Option 1" required>
-                     <button type="button" class="remove-option-btn" onclick="removeOption(this)">&times;</button>
-                   </div>
-                   <div class="option-input-row">
-                     <input type="text" class="option-input" placeholder="Option 2" required>
-                     <button type="button" class="remove-option-btn" onclick="removeOption(this)">&times;</button>
-                   </div>
-                 </div>
-                 <button type="button" class="add-option-btn" onclick="addOption()">+ Add an option</button>
-               </div>
-
-                              <div class="modal-footer">
-                  <button type="button" class="btn-secondary" id="cancelQuestionBtn">Cancel</button>
-                  <button type="button" class="btn-danger" id="deleteQuestionBtn">Delete</button>
-                  <button type="submit" class="btn-primary">Save</button>
-                  <button type="button" class="btn-success" id="addAnotherQuestionBtn">Add Another Question</button>
-                </div>
-             </form>
-           </div>
-         </div>
-
-         <!-- Questions Display Section -->
-         <div class="questions-display-section" id="questionsDisplaySection" style="display: none;">
-           <div class="questions-header">
-             <h3>Membership Questions</h3>
-             <button class="create-question-btn" id="createQuestionBtn">Create</button>
-           </div>
-           <div class="questions-list" id="questionsList">
-             <!-- Questions will be dynamically added here -->
-           </div>
-         </div>
+            <div class="modal-footer">
+              <button type="button" class="btn-secondary" id="cancelQuestionsBtn">Cancel</button>
+              <button type="button" class="btn-primary" id="createQuestionBtn">Create</button>
+            </div>
+          </div>
+        </div>
 
         <div class="Kyc">
           <label for="KYC" class="form-label">KYC Verification</label>
@@ -765,22 +883,21 @@
 </div>
 
 <script>
-// Privacy selection handling
 const privacySelect = document.getElementById('community-type');
 const modal = document.getElementById('privacyModal');
 const yesBtn = document.getElementById('yesBtn');
 const noBtn = document.getElementById('noBtn');
 const questionFormModal = document.getElementById('questionFormModal');
 const closeQuestionModal = document.getElementById('closeQuestionModal');
-const cancelQuestionBtn = document.getElementById('cancelQuestionBtn');
 const questionForm = document.getElementById('questionForm');
-const questionsDisplaySection = document.getElementById('questionsDisplaySection');
+const questionsDisplayModal = document.getElementById('questionsDisplayModal');
 const createQuestionBtn = document.getElementById('createQuestionBtn');
 const questionsList = document.getElementById('questionsList');
+const questionTypeSelect = document.getElementById('questionTypeSelect');
+const optionsSection = document.getElementById('optionsSection');
 
-// Store questions data
-let questionsData = [];
 let currentQuestionNumber = 1;
+let questions = [];
 
 // Show privacy confirmation modal when private is selected
 privacySelect.addEventListener('change', () => {
@@ -789,20 +906,25 @@ privacySelect.addEventListener('change', () => {
   }
 });
 
-// Handle Yes button click - show question form
-yesBtn.addEventListener('click', () => {
+// Handle Yes button click - show membership questions section
+yesBtn.addEventListener('click', function() {
   modal.style.display = 'none';
-  questionFormModal.style.display = 'flex';
-  // Reset title and form for new question
-  document.querySelector('.modal-header h2').textContent = 'Question 1';
-  questionForm.reset();
-  document.getElementById('optionsSection').style.display = 'block';
-  currentQuestionNumber = 1;
+  questionsDisplayModal.style.display = 'flex';
 });
 
 // Handle No button click - close modal
-noBtn.addEventListener('click', () => {
+noBtn.addEventListener('click', function() {
   modal.style.display = 'none';
+});
+
+// Handle Create button click - show question form modal
+createQuestionBtn.addEventListener('click', function() {
+  questionsDisplayModal.style.display = 'none';
+  questionFormModal.style.display = 'flex';
+  document.getElementById('modalTitle').textContent = 'Edit Question';
+  questionForm.reset();
+  document.getElementById('questionText').placeholder = 'Ask a question...';
+  updateOptionsVisibility();
 });
 
 // Close question form modal
@@ -810,289 +932,203 @@ closeQuestionModal.addEventListener('click', () => {
   questionFormModal.style.display = 'none';
 });
 
-// Cancel button in question form
-cancelQuestionBtn.addEventListener('click', () => {
-  questionFormModal.style.display = 'none';
+// Close questions display modal
+document.getElementById('closeQuestionsDisplayModal').addEventListener('click', function() {
+  questionsDisplayModal.style.display = 'none';
 });
 
-// Close modal when clicking outside
-window.addEventListener('click', (event) => {
-  if (event.target === questionFormModal) {
-    questionFormModal.style.display = 'none';
-  }
-  if (event.target === modal) {
-    modal.style.display = 'none';
-  }
+document.getElementById('cancelQuestionsBtn').addEventListener('click', function() {
+  questionsDisplayModal.style.display = 'none';
 });
 
-// Question type selection handling
-const questionTypeSelect = document.getElementById('questionTypeSelect');
-const optionsSection = document.getElementById('optionsSection');
+// Handle question type change
+questionTypeSelect.addEventListener('change', updateOptionsVisibility);
 
-questionTypeSelect.addEventListener('change', function() {
-  const questionType = this.value;
-  
-  if (questionType === 'radio' || questionType === 'checkbox') {
-    optionsSection.style.display = 'block';
-  } else {
-    optionsSection.style.display = 'none';
-  }
-});
-
-// Add new option
-function addOption() {
-  const optionInputs = document.getElementById('optionInputs');
-  const newOption = document.createElement('div');
-  newOption.className = 'option-input-row';
-  newOption.innerHTML = `
-    <input type="text" class="option-input" placeholder="Option ${optionInputs.children.length + 1}" required>
-    <button type="button" class="remove-option-btn" onclick="removeOption(this)">&times;</button>
-  `;
-  optionInputs.appendChild(newOption);
-}
-
-// Remove option
-function removeOption(button) {
-  const optionInputs = document.getElementById('optionInputs');
-  if (optionInputs.children.length > 2) {
-    button.parentElement.remove();
-  }
-}
-
-// Handle question form submission
-questionForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  
+function updateOptionsVisibility() {
   const questionType = questionTypeSelect.value;
-  const questionText = document.getElementById('questionText').value;
-  
-  let questionData = {
-    id: Date.now(),
-    number: currentQuestionNumber,
-    type: questionType,
-    question: questionText
+  if (questionType === 'text') {
+    optionsSection.style.display = 'none';
+  } else {
+    optionsSection.style.display = 'block';
+  }
+}
+
+function addSampleQuestion() {
+  const sampleQuestion = {
+    id: 1,
+    text: "Howdy! What type of creative work do you do?",
+    type: "checkbox",
+    options: ["Write your answer"]
   };
   
-  if (questionType === 'radio' || questionType === 'checkbox') {
-    const options = [];
-    document.querySelectorAll('.option-input').forEach(input => {
-      if (input.value.trim()) {
-        options.push(input.value.trim());
-      }
+  const questionElement = createQuestionElement(sampleQuestion);
+  questionsList.appendChild(questionElement);
+}
+
+function createQuestionElement(question) {
+  const questionDiv = document.createElement('div');
+  questionDiv.className = 'question-item';
+  let previewText = '';
+  if (question.type === 'text') {
+    previewText = 'Write your answer';
+  } else {
+    previewText = question.options.join(', ');
+  }
+  
+  questionDiv.innerHTML = `
+    <div class="question-number">Question ${question.id}</div>
+    <div class="question-text">${question.text}</div>
+    <div class="question-preview">${previewText}</div>
+    <div class="question-actions">
+      <button class="edit-btn" onclick="editQuestion(${question.id})">Edit</button>
+      <button class="delete-btn" onclick="deleteQuestion(${question.id})">Delete</button>
+    </div>
+  `;
+  return questionDiv;
+}
+
+function editQuestion(questionId) {
+  const question = questions.find(q => q.id === questionId);
+  if (!question) return;
+  
+  console.log("Editing question:", question);
+  
+  questionsDisplayModal.style.display = 'none';
+  questionFormModal.style.display = 'flex';
+  document.getElementById('modalTitle').textContent = 'Edit Question';
+  
+  // Pre-fill form with existing question data
+  document.getElementById('questionText').value = question.text;
+  questionTypeSelect.value = question.type;
+  
+  // Clear existing options and add question options
+  const optionInputs = document.getElementById('optionInputs');
+  optionInputs.innerHTML = '';
+  
+  if (question.type !== 'text' && question.options.length > 0) {
+    question.options.forEach(option => {
+      const newOptionRow = document.createElement('div');
+      newOptionRow.className = 'option-input-row';
+      newOptionRow.innerHTML = `
+        <input type="text" class="option-input" placeholder="Write your answer" value="${option}" required>
+        <button type="button" class="remove-option-btn" onclick="removeOption(this)">×</button>
+      `;
+      optionInputs.appendChild(newOptionRow);
     });
-    questionData.options = options;
+  } else {
+    // Add default option row
+    const newOptionRow = document.createElement('div');
+    newOptionRow.className = 'option-input-row';
+    newOptionRow.innerHTML = `
+      <input type="text" class="option-input" placeholder="Write your answer" required>
+      <button type="button" class="remove-option-btn" onclick="removeOption(this)">×</button>
+    `;
+    optionInputs.appendChild(newOptionRow);
   }
   
-  // Add question to questions data
-  questionsData.push(questionData);
-  
-  // Display the question
-  displayQuestion(questionData);
-  
-  // Show questions display section
-  questionsDisplaySection.style.display = 'block';
-  
-  // Close modal
-  questionFormModal.style.display = 'none';
-  
-  // Reset form and title for next use
-  questionForm.reset();
-  document.getElementById('optionsSection').style.display = 'block';
-  document.querySelector('.modal-header h2').textContent = 'Question 1';
-  currentQuestionNumber = 1;
-  
-  // Show success message
-  alert('Question saved successfully!');
-});
+  updateOptionsVisibility();
+}
 
-// Delete button functionality
-const deleteQuestionBtn = document.getElementById('deleteQuestionBtn');
-deleteQuestionBtn.addEventListener('click', function() {
-  if (confirm('Are you sure you want to delete this question?')) {
-    // Here you can add logic to delete the question
-    console.log('Question deleted');
-    questionFormModal.style.display = 'none';
-    questionForm.reset();
-    document.getElementById('optionsSection').style.display = 'block';
+function deleteQuestion(questionId) {
+  console.log(" Deleting question:", questionId);
+  
+  // Remove from questions array
+  questions = questions.filter(q => q.id !== questionId);
+  
+  // Remove from display
+  const questionElement = document.querySelector(`[onclick="deleteQuestion(${questionId})"]`).closest('.question-item');
+  if (questionElement) {
+    questionElement.remove();
   }
-});
+  
+  console.log("[v0] Question deleted, remaining questions:", questions.length);
+}
 
-// Add Another Question button functionality
-const addAnotherQuestionBtn = document.getElementById('addAnotherQuestionBtn');
-addAnotherQuestionBtn.addEventListener('click', function() {
-  // Save current question data
+function addOption() {
+  const optionInputs = document.getElementById('optionInputs');
+  const newOptionRow = document.createElement('div');
+  newOptionRow.className = 'option-input-row';
+  newOptionRow.innerHTML = `
+    <input type="text" class="option-input" placeholder="Write your answer" required>
+    <button type="button" class="remove-option-btn" onclick="removeOption(this)">×</button>
+  `;
+  optionInputs.appendChild(newOptionRow);
+}
+
+function removeOption(button) {
+  const optionRow = button.closest('.option-input-row');
+  const optionInputs = document.getElementById('optionInputs');
+  if (optionInputs.children.length > 1) {
+    optionRow.remove();
+  }
+}
+
+// Handle form submission
+questionForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  console.log(" Form submitted, processing question...");
+  
+  // Get form data
+  const questionText = document.getElementById('questionText').value.trim();
   const questionType = questionTypeSelect.value;
-  const questionText = document.getElementById('questionText').value;
   
-  if (questionText.trim() === '') {
-    alert('Please enter a question first');
+  if (!questionText) {
+    console.log("No question text provided");
     return;
   }
   
-  let questionData = {
-    id: Date.now(),
-    number: currentQuestionNumber,
+  // Get options if applicable
+  let options = [];
+  if (questionType !== 'text') {
+    const optionInputs = document.querySelectorAll('.option-input');
+    options = Array.from(optionInputs).map(input => input.value.trim()).filter(value => value);
+    if (options.length === 0) {
+      options = ['Write your answer'];
+    }
+  } else {
+    options = ['Write your answer'];
+  }
+  
+  // Create new question object
+  const newQuestion = {
+    id: currentQuestionNumber++,
+    text: questionText,
     type: questionType,
-    question: questionText
+    options: options
   };
   
-  if (questionType === 'radio' || questionType === 'checkbox') {
-    const options = [];
-    document.querySelectorAll('.option-input').forEach(input => {
-      if (input.value.trim()) {
-        options.push(input.value.trim());
-      }
-    });
-    questionData.options = options;
-  }
+  console.log(" Adding question:", newQuestion);
   
-  // Add question to questions data
-  questionsData.push(questionData);
+  // Add to questions array
+  questions.push(newQuestion);
   
-  // Display the question
-  displayQuestion(questionData);
+  // Create and add question element to display
+  const questionElement = createQuestionElement(newQuestion);
+  questionsList.appendChild(questionElement);
   
-  // Show questions display section
-  questionsDisplaySection.style.display = 'block';
+  console.log(" Question added to display, total questions:", questions.length);
   
-  // Reset form for new question
-  questionForm.reset();
-  document.getElementById('optionsSection').style.display = 'block';
-  
-  // Update question number in title
-  currentQuestionNumber++;
-  document.querySelector('.modal-header h2').textContent = `Question ${currentQuestionNumber}`;
-  
-  // Show success message
-  alert('Question added! You can now add another question.');
+  // Close modal and show questions display
+  questionFormModal.style.display = 'none';
+  questionsDisplayModal.style.display = 'flex';
 });
 
-// Create question button functionality
-createQuestionBtn.addEventListener('click', function() {
-  questionFormModal.style.display = 'flex';
-  // Reset title and form for new question
-  document.querySelector('.modal-header h2').textContent = 'Question 1';
-  questionForm.reset();
-  document.getElementById('optionsSection').style.display = 'block';
-  currentQuestionNumber = 1;
+// Close modals when clicking outside
+window.addEventListener('click', (e) => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+  if (e.target === questionFormModal) {
+    questionFormModal.style.display = 'none';
+  }
+  if (e.target === questionsDisplayModal) {
+    questionsDisplayModal.style.display = 'none';
+  }
 });
 
-// Function to display a question
-function displayQuestion(questionData) {
-  const questionCard = document.createElement('div');
-  questionCard.className = 'question-card';
-  questionCard.setAttribute('data-question-id', questionData.id);
-  
-  let answerInput = '';
-  if (questionData.type === 'text') {
-    answerInput = `<input type="text" class="answer-input" placeholder="Write your answer..." readonly>`;
-  } else if (questionData.type === 'radio') {
-    answerInput = questionData.options.map(option => 
-      `<div style="margin-bottom: 8px;">
-        <input type="radio" name="q${questionData.id}" disabled> 
-        <span style="color: #65676b;">${option}</span>
-      </div>`
-    ).join('');
-  } else if (questionData.type === 'checkbox') {
-    answerInput = questionData.options.map(option => 
-      `<div style="margin-bottom: 8px;">
-        <input type="checkbox" name="q${questionData.id}" disabled> 
-        <span style="color: #65676b;">${option}</span>
-      </div>`
-    ).join('');
-  }
-  
-  questionCard.innerHTML = `
-    <div class="question-number">Question ${questionData.number}</div>
-    <div class="question-text">${questionData.question}</div>
-    <div class="answer-input-container">
-      ${answerInput}
-    </div>
-    <div class="question-actions">
-      <button class="edit-question-btn" onclick="editQuestion(${questionData.id})">Edit</button>
-      <button class="delete-question-btn" onclick="deleteQuestion(${questionData.id})">Delete</button>
-    </div>
-  `;
-  
-  questionsList.appendChild(questionCard);
-}
-
-// Function to edit a question
-function editQuestion(questionId) {
-  const question = questionsData.find(q => q.id === questionId);
-  if (question) {
-    // Open modal with question data
-    questionFormModal.style.display = 'flex';
-    document.getElementById('questionText').value = question.question;
-    questionTypeSelect.value = question.type;
-    
-    // Show/hide options based on type
-    if (question.type === 'radio' || question.type === 'checkbox') {
-      optionsSection.style.display = 'block';
-      // Clear existing options and add question options
-      const optionInputs = document.getElementById('optionInputs');
-      optionInputs.innerHTML = '';
-      question.options.forEach(option => {
-        addOption();
-        const lastInput = optionInputs.lastElementChild.querySelector('input');
-        lastInput.value = option;
-      });
-    } else {
-      optionsSection.style.display = 'none';
-    }
-    
-    // Update modal title
-    document.querySelector('.modal-header h2').textContent = `Edit Question ${question.number}`;
-    
-    // Store current question ID for updating
-    questionForm.setAttribute('data-edit-id', questionId);
-  }
-}
-
-// Function to delete a question
-function deleteQuestion(questionId) {
-  if (confirm('Are you sure you want to delete this question?')) {
-    // Remove from questions data
-    questionsData = questionsData.filter(q => q.id !== questionId);
-    
-    // Remove from DOM
-    const questionCard = document.querySelector(`[data-question-id="${questionId}"]`);
-    if (questionCard) {
-      questionCard.remove();
-    }
-    
-    // Hide display section if no questions
-    if (questionsData.length === 0) {
-      questionsDisplaySection.style.display = 'none';
-    }
-    
-    // Renumber remaining questions
-    renumberQuestions();
-  }
-}
-
-// Function to renumber questions
-function renumberQuestions() {
-  questionsData.forEach((question, index) => {
-    question.number = index + 1;
-    const questionCard = document.querySelector(`[data-question-id="${question.id}"]`);
-    if (questionCard) {
-      const questionNumber = questionCard.querySelector('.question-number');
-      questionNumber.textContent = `Question ${question.number}`;
-    }
-  });
-}
-
-// Initialize the form
-document.addEventListener('DOMContentLoaded', function() {
-  // Add initial options
-  addOption();
-  addOption();
-  
-  // Set default question type and show options section
-  questionTypeSelect.value = 'checkbox';
-  optionsSection.style.display = 'block';
-});
+// Initialize options visibility
+updateOptionsVisibility();
 </script>
 
     <!-- Profile Modal -->
