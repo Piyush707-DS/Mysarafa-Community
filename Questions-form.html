@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Membership Questions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .question {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background: #fafafa;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      margin-top: 5px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .options-box {
+      margin-top: 10px;
+    }
+    .option-item {
+      display: flex;
+      margin-top: 5px;
+      gap: 8px;
+    }
+    .option-item input {
+      flex: 1;
+    }
+    button {
+      margin-top: 15px;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      background: #1877f2;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #145db2;
+    }
+    .remove-btn {
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Membership Questions</h2>
+    <p>You can add up to 3 questions for people who request to join your group.</p>
+
+    <!-- Question Block -->
+    <div class="question">
+      <label for="qText">Question</label>
+      <input type="text" id="qText" placeholder="Enter your question">
+
+      <label for="qType">Question Type</label>
+      <select id="qType">
+        <option value="text">Short Answer</option>
+        <option value="radio">Multiple Choice</option>
+        <option value="checkbox">Checkboxes</option>
+      </select>
+
+      <div class="options-box" id="optionsBox">
+        <label>Options</label>
+        <div class="option-item">
+          <input type="text" placeholder="Enter option">
+          <button type="button" class="remove-btn">X</button>
+        </div>
+      </div>
+      <button type="button" id="addOption">+ Add Option</button>
+    </div>
+
+    <button>Save Question</button>
+  </div>
+
+  <script>
+    const qType = document.getElementById('qType');
+    const optionsBox = document.getElementById('optionsBox');
+    const addOptionBtn = document.getElementById('addOption');
+
+    // Show/hide options based on question type
+    qType.addEventListener('change', () => {
+      if (qType.value === 'text') {
+        optionsBox.style.display = 'none';
+        addOptionBtn.style.display = 'none';
+      } else {
+        optionsBox.style.display = 'block';
+        addOptionBtn.style.display = 'inline-block';
+      }
+    });
+
+    // Add new option
+    addOptionBtn.addEventListener('click', () => {
+      const optionDiv = document.createElement('div');
+      optionDiv.classList.add('option-item');
+      optionDiv.innerHTML = `
+        <input type="text" placeholder="Enter option">
+        <button type="button" class="remove-btn">X</button>
+      `;
+      optionsBox.appendChild(optionDiv);
+
+      optionDiv.querySelector('.remove-btn').addEventListener('click', () => {
+        optionDiv.remove();
+      });
+    });
+
+    // Remove option from default
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.target.parentElement.remove();
+      });
+    });
+  </script>
+</body>
+</html>

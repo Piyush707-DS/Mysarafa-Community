@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sarafa Community Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
     <link rel="icon" href="Assets/Images/logo.png" type="image/x-icon">
     <style>
     /* Reset and base styles */
-    * {
+    /* * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
@@ -30,25 +30,25 @@
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-    }
+    } */
 
-    .header {
+    /* .header {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
       padding: 30px;
       text-align: center;
-    }
+    } */
 
-    .header h1 {
+    /* .header h1 {
       font-size: 28px;
       font-weight: 700;
       margin-bottom: 8px;
-    }
+    } */
 
-    .header p {
+    /* .header p {
       font-size: 16px;
       opacity: 0.9;
-    }
+    } */
 
     .form-container {
       padding: 30px;
@@ -106,7 +106,6 @@
       background: #166fe5;
     }
 
-    /* Updated modal styles to match Facebook exactly */
     .modal {
       display: none;
       position: fixed;
@@ -129,6 +128,7 @@
       width: 90%;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
       position: relative;
+      max-height: 150px;
     }
 
     .modal-content p {
@@ -169,7 +169,6 @@
       background: #d8dadf;
     }
 
-    /* Facebook-style membership questions modal */
     .question-form-modal {
       display: none;
       position: fixed;
@@ -595,35 +594,12 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 480px) {
-      .container {
-        margin: 20px;
-        border-radius: 8px;
-      }
-      
-      .header {
-        padding: 20px;
-      }
-      
-      .form-container {
-        padding: 20px;
-      }
-      
-      .modal-content {
-        margin: 20px;
-        max-width: calc(100% - 40px);
-      }
-      
-      .question-form-content {
-        margin: 20px;
-        max-width: calc(100% - 40px);
-      }
-    }
+    
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+     <header class="header">
         <div class="header-content">
             <div class="header-left">
                 <div class="community-name">
@@ -668,59 +644,59 @@
 
     <div class="main-container">
       <!-- Sidebar -->
-      <div class="sidebar">
-        <div class="sidebar-menu">
-          <a href="Index.html" class="menu-item active">
-            Dashboard
-          </a>
-          <a href="Member.html" class="menu-item">
-            Member
-            <i class="fas fa-plus"></i>
-          </a>
-          <a href="Discussion-chat.html" class="menu-item">
-             Discussion/Chat
-                <i class="fas fa-comment"></i>
-           
-          </a>
-          <a href="Announcement.html" class="menu-item">
-              Announcement
-                <i class="fas fa-bullhorn"></i>
-            
-          </a>
-          <a href="Events-meetings.html" class="menu-item">
-            
-                Events/Meetings
-                <i class="fas fa-calendar"></i>
-            
-          </a>
-          <a href="Monthly-membership.html" class="menu-item">
-            
-                Monthly Membership
-                <i class="fas fa-users"></i>
-          
-          </a>
-          <a href="KYC-verification.html" class="menu-item">
-              KYC Verification
-                <i class="fas fa-shield-alt"></i>
-            
-          </a>
-          <a href="Media-gallery.html" class="menu-item">
-                  Media Gallery
-                <i class="fas fa-images"></i>
-          </a>
-          <a href="Whatsapp-sms.html" class="menu-item">
-                  Whatsapp &SMS
-                <i class="fas fa-message"></i>
-            
-          </a>
-       </div>
-      </div>   
-      <main class="main-content">
+      <aside class="sidebar">
+            <div class="sidebar-menu">
+              <a href="Index.html" class="menu-item ">
+                Dashboard
+              </a>
+              <a href="Member.html" class="menu-item active cs_btn cs_style_1 cs_bg_1 cs_white_color effect_hover">
+                Member
+                <i class="fas fa-plus"></i>
+              </a>
+              <a href="Discussion-chat.html" class="menu-item">
+                 Discussion/Chat
+                    <i class="fas fa-comment"></i>
+               
+              </a>
+              <a href="Announcement.html" class="menu-item">
+                  Announcement
+                    <i class="fas fa-bullhorn"></i>
+                
+              </a>
+              <a href="Events-meetings.html" class="menu-item">
+                
+                    Events/Meetings
+                    <i class="fas fa-calendar"></i>
+                
+              </a>
+              <a href="Monthly-membership.html" class="menu-item">
+                
+                    Monthly Membership
+                    <i class="fas fa-users"></i>
+              
+              </a>
+              <a href="KYC-verification.html" class="menu-item">
+                  KYC Verification
+                    <i class="fas fa-shield-alt"></i>
+                
+              </a>
+              <a href="Media-gallery.html" class="menu-item">
+                      Media Gallery
+                    <i class="fas fa-images"></i>
+              </a>
+              <a href="Whatsapp-sms.html" class="menu-item">
+                      Whatsapp &SMS
+                    <i class="fas fa-message"></i>
+                
+              </a>
+              </div>
+        </aside>
+      <main class="main-content row">
         <h1 class="page-title">Community Creation</h1>
           
-        <div class="group-create-container">
+        <div class="group-create-container col-md-6 col-12">
           <!-- Left Section: Input Fields -->
-          <div class="group-create-form-section">
+          <div class="group-create-form-section  col-md-6 col-12">
             <h2 class="form-title">Community Group</h2>
             <form class="group-create-form" id="groupCreateForm">
               <div class="form-section">
@@ -1041,7 +1017,7 @@ function deleteQuestion(questionId) {
     questionElement.remove();
   }
   
-  console.log("[v0] Question deleted, remaining questions:", questions.length);
+  console.log(" Question deleted, remaining questions:", questions.length);
 }
 
 function addOption() {

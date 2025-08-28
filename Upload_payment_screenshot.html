@@ -180,15 +180,22 @@
     <div class="upload-wrapper">
       <section class="upload-card">
         <div class="upload-title"><i class="fas fa-cloud-upload-alt"></i> Upload Screenshot</div>
+        <label for="Communityselection">Select Community</label>
+        <select name="community" id="Communityselection" class="upload-input">
+          <option value="">Select</option>
+          <option value="Bhopal Sarafa">Bhopal Sarafa</option>
+          <option value="Bengali Sarafa">Bengali Sarafa</option>
+        </select><br><br>
         <label for="paymentScreenshot">Select file</label>
         <input type="file" id="paymentScreenshot" class="upload-input" accept="image/*,application/pdf" required>
         <div class="upload-hint">Accepted formats: JPG, PNG, PDF. Image files will show a preview.</div>
+
         <div class="upload-actions">
           <button class="upload-btn" id="submitPaymentProof"><i class="fas fa-paper-plane"></i> Submit</button>
         </div>
         <div class="preview-wrap" id="paymentPreview">
           <div class="preview-label">Preview</div>
-          <img id="paymentPreviewImg" class="preview-img" alt="Screenshot Preview" />
+          <img id="paymentPreviewImg" class="preview-img" alt="Screenshot Preview"/>
         </div>
       </section>
       <aside class="community-info">
