@@ -202,10 +202,7 @@
                     <input type="date" class="filter-input">
                 </div>
                 
-                <button class="search-btn">
-                    <i class="fas fa-search"></i>
-                    Search
-                </button>
+                  
             </div>
         </div>
         <div class="payment-records-list" style="margin-bottom:32px;">
@@ -216,10 +213,11 @@
           <th>Name</th>
           
           <th>UPI ID</th>
-          <th>Txn ID</th>
+          <th>Date</th>
+          <th>Time</th>
           <th>Method</th>
           <th>Amount</th>
-          <th>Screenshot</th>
+         
           
           <th>Actions</th>
         </tr>
@@ -230,13 +228,10 @@
         
           <td>sarafa@icici</td>
           <td>TXN123456789</td>
+          <td></td>
           <td>UPI</td>
           <td>₹500</td>
-          <td>
-            <button class="screenshot-btn" title="View Screenshot">
-              <i class="fas fa-info-circle"></i>
-            </button>
-          </td>
+          
           
           <td>
             <button class="action-btn" title="View"><i class="fas fa-eye"></i></button>
@@ -250,13 +245,10 @@
           
           <td>sarafa@icici</td>
           <td>TXN123456790</td>
+          <td></td>
           <td>UPI</td>
           <td>₹700</td>
-          <td>
-            <button class="screenshot-btn" title="View Screenshot">
-              <i class="fas fa-info-circle"></i>
-            </button>
-          </td>
+         
          
           <td>
             <button class="action-btn" title="View"><i class="fas fa-eye"></i></button>
@@ -269,13 +261,10 @@
         
           <td>sarafa@icici</td>
           <td>TXN123456789</td>
+          <td></td>
           <td>UPI</td>
           <td>₹500</td>
-          <td>
-            <button class="screenshot-btn" title="View Screenshot">
-              <i class="fas fa-info-circle"></i>
-            </button>
-          </td>
+         
           
           <td>
             <button class="action-btn" title="View"><i class="fas fa-eye"></i></button>
@@ -288,13 +277,10 @@
       
           <td>fr4@ybl</td>
           <td>TXN123456791</td>
+          <td></td>
           <td>UPI</td>
           <td>₹1200</td>
-          <td>
-            <button class="screenshot-btn" title="View Screenshot">
-              <i class="fas fa-info-circle"></i>
-            </button>
-          </td>
+         
           
           <td>
             <button class="action-btn" title="View"><i class="fas fa-eye"></i></button>
@@ -307,13 +293,10 @@
         
           <td>sarafa@icici</td>
           <td>TXN123456789</td>
+          <td></td>
           <td>UPI</td>
           <td>₹500</td>
-          <td>
-            <button class="screenshot-btn" title="View Screenshot">
-              <i class="fas fa-info-circle"></i>
-            </button>
-          </td>
+         
           
           <td>
             <button class="action-btn" title="View"><i class="fas fa-eye"></i></button>
@@ -326,7 +309,6 @@
   </div>
 </div> 
 <script>
-// Screenshot info icon functionality
 document.querySelectorAll('.screenshot-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     alert('Show payment screenshot here (like Razorpay)');
